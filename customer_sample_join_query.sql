@@ -1,0 +1,4 @@
+
+SELECT SAMPLE_CUSTOMER.custFirstName + ' ' + SAMPLE_CUSTOMER.custLastName as 'full name', PROVINCE.provName
+FROM PROVINCE
+JOIN SAMPLE_CUSTOMER ON PROVINCE.provAbbrev = SAMPLE_CUSTOMER.provAbbrev;
