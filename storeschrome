@@ -1,0 +1,26 @@
+#Short Script to open printer on chrome#
+while ($true) {
+$STORE = Read-Host "STORE #"
+$STORE = "mww"+$STORE+"dom01"
+echo $STORE
+
+ping $STORE -n 2
+
+if ($?){
+
+    $ips = [System.Net.Dns]::GetHostAddresses("$STORE") | select IPAddressToString -ExpandProperty IPAddressToString
+
+    echo "Store IP is $ips " 
+
+    $ip = (([ipaddress] $ips).GetAddressBytes()[0..2] -join ".") + ".30"
+
+    echo $ip
+    cmd /c start chrome $ip
+
+    }
+
+else{
+        echo "invalid store i guess"
+    }
+
+}
